@@ -10,15 +10,15 @@ choice = int(choice)
 
 if choice == 1:
     print("You chose Try Hack ME")
-    subprocess.call("openvpn undefinedshinobi.ovpn", shell=True)
+    subprocess.call("openvpn THM.ovpn", shell=True)
 
 elif choice == 2:
     print("You chose Hack The Box")
-    subprocess.call("openvpn Shinobibugh.ovpn", shell=True)
+    subprocess.call("openvpn HTB.ovpn", shell=True)
 
 elif choice == 3:
     print("You chose Virtual Hacking Labs")
-    subprocess.call("openvpn ", shell=True)
+    subprocess.call("openvpn VHL.ovpn ", shell=True)
 
 
 
