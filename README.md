@@ -8,6 +8,7 @@ Sometimes while practicing for the OSCP my VM has problems. Just in case, you're
 
 #autonmap.py
 I attempted to make a automated scanner with nmap using nmap, to see if it would make things easier for the OSCP exam. 
+To get it to execute, be sure to use "python3 autonmap.py"
 
 #vnp.py
 I wanted to practice my python scripting and get better by actually having a small project. I chose to make a choosing OpenVPN script, because I realized that I choose between a few vpns.
