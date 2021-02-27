@@ -1,11 +1,13 @@
+#!/usr/bin/env python
 import os, subprocess
-os.system("sudo apt-get install nmap >/dev/null 2>&1")
+os.system("sudo apt-get install -y nmap >/dev/null 2>&1")
 os.system("pip install --upgrade python-nmap >/dev/null 2>&1")
-os.system("sudo apt-get install nikto >/dev/null 2>&1")
+os.system("sudo apt-get install -y nikto >/dev/null 2>&1")
 import optparse,nmap
 #initialize the port scanner
 import json, datetime
 import argparse
+from getpass import getuser
 
 def callbackMySql(host, result):
         try:
@@ -545,7 +547,7 @@ class NmapScannerAsync:
                 except Exception as e:
                         print( str(e))
                         print( "Error to connect with " + hostname + " for port scanning" )
-                        pass
+
         
 
 scanner = nmap.PortScanner()
@@ -561,6 +563,7 @@ while int(x)>=y:
         y=y+1
 print(ip_list)
 z=1
+username = getuser()
 for ips in ip_list:
         ip_addr = ips 
         #input the IP address you want scanned
@@ -571,7 +574,7 @@ for ips in ip_list:
         if os.path.isdir(directory):
                 pass
         else:
-                os.system("sudo mkdir "+str(ip_addr)+" >/dev/null 2>&1")
+                os.system("mkdir "+str(ip_addr)+" >/dev/null 2>&1")
 
         resp = input("""\nPlease enter the type of scan you want to run
                         1)SYN ACK Scan
@@ -705,7 +708,7 @@ for ips in ip_list:
             directory = str(directory+'/Nikto'+'.txt')
             f = open(str(directory), "a")
             f.write(str("---------------------------Nikto------------------"+'\n'))
-            cmd=str('cd /home/username/Desktop && sudo nikto -host '+ ip_addr)
+            cmd=str('cd /home/{username}/Desktop && sudo nikto -host {ip_address}'.format(username=username, ip_address=ip_addr))
             data3 = os.popen(cmd).read()
             print(data3)
             f.write(str(data3))
@@ -807,7 +810,7 @@ for ips in ip_list:
             f = open(str(directory), "a")
             f.write(str("---------------------------SMTP------------------"+'\n'))
             print("Nmap Version: ", scanner.nmap_version())
-            f.write(str(NmapScannerAsync().nmapScan(str(ip_addr), str(25,465,587))))
+            f.write(str(NmapScannerAsync().nmapScan(str(ip_addr), '25,465,587')))
             f.write(str("------------------------END-----------------------------------"+'\n'))
             f.close()
 
