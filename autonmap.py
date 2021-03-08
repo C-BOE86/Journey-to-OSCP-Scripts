@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os, subprocess
 os.system("sudo apt-get install -y nmap >/dev/null 2>&1")
 os.system("pip install --upgrade python-nmap >/dev/null 2>&1")
